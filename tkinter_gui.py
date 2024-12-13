@@ -23,17 +23,17 @@ class App(customtkinter.CTk):
     def __init__(self):
         super().__init__()
 
-        # メンバー変数の設定
+        # member variables
         self.fonts = (FONT_TYPE, 15)
         self.geometry("600x400")
         self.title("Number Place Solver GUI")
         self.current_level = 1
         self.solving_time = 0
 
-        # 問題の状態を保存する
+        # current problem
         self.current_problem = maker.get_problem(base_problem)
 
-        # フォームのセットアップ
+        # setup
         self.setup_form()
 
     def setup_form(self):
@@ -58,7 +58,7 @@ class App(customtkinter.CTk):
         self.level_label = customtkinter.CTkLabel(master=self, text=f"Level: {self.current_level}", font=self.fonts)
         self.level_label.place(x=92, y=50)
 
-        # Solve Time Label (初期は空白)
+        # Solve Time Label
         self.solving_time_label = customtkinter.CTkLabel(master=self, text=f"Solving time:  sec", font=self.fonts)
         self.solving_time_label.place(x=50, y=200)
 

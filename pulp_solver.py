@@ -67,7 +67,7 @@ def solve(inp):
         problem.solve()
         if LpStatus[problem.status] == "Optimal":
             answers.append(''.join([v for r in rows for c in columns for v in values if value(choices[v][r][c]) == 1]))
-            # 見つけた解を制約として追加
+            # add solution to problem as a constraint
             problem += lpSum(
                 [choices[v][r][c] for v in values for r in rows for c in columns if value(choices[v][r][c]) == 1]
             ) <= 80
@@ -77,7 +77,6 @@ def solve(inp):
 
     if answers:
         # desplay answer
-        # print(answers[0])
         for i in range(9):        
             [print([int(answers[0][i * 9 + j]) for j in range(9)])]
         return [[int(answers[0][i * 9 + j]) for j in range(9)] for i in range(9)], elapsed_time
